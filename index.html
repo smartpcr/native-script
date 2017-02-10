@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DVD Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
+    <link media="all" type="text/css" rel="stylesheet" href="/node_modules/foundation-sites/dist/css/foundation-flex.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="css/main.css">
+
+    <script src="/node_modules/chart.js/dist/Chart.js"></script>
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+</head>
+<body>
+    <div class="row">
+        <header>
+            <img src="images/menu.svg">
+            <input type="text" id="search" placeholder="search">
+        </header>
+    </div>
+
+    <div class="row">
+        <div id="geo">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="content">
+            <div class="row pad">
+                <div class="columns">
+                    <h1>Hollywood Titles</h1>
+                    <p class="subtitle">Latest releases</p>
+                </div>
+                <div class="columns">
+                    <a href="#" class="btn" id="view-all">View All Releases</a>
+                </div>
+            </div>
+
+            <div id="thumb-container">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+                <img src="images/thumb.jpg">
+            </div>
+
+            <div class="row pad">
+                <div class="columns">
+                    <h2>New DVD Releases</h2>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </div>
+
+                <div class="columns">
+                    <h3>DVD Releades by Week</h3>
+
+                    <canvas id="myChart" width="100%" height="50"></canvas>
+                    <script>
+                        var ctx = document.getElementById("myChart");
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: ["5/01", "5/08", "5/16", "5/24", "6/02", "5/10"],
+                                datasets: [{
+                                    label: '# of releases',
+                                    data: [12, 19, 3, 5, 2, 3],
+
+                                    borderColor: [
+                                        '#67d2f4'
+                                    ],
+                                    borderWidth: 3
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        gridLines: {
+                                            display:false
+                                        } 
+                                    }],
+                                    xAxes: [{
+                                        gridLines: {
+                                            display:false
+                                        } 
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script language="Javascript"> 
+        var city = geoplugin_city();
+        var country = geoplugin_countryName();
+        var latitude = geoplugin_latitude()
+        var longitude = geoplugin_longitude()
+
+        document.getElementById('geo').innerHTML = city + "," + country + ", " + latitude +"+"+longitude
+    </script>
+</body>
+</html>
